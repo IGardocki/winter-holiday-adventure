@@ -1,19 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
-import { winterHolidays } from './winterHolidays';
-import { Button, Card, Container, Row } from 'react-bootstrap';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {Welcome} from './Welcome';
-import {Holidays, holidays} from './Holidays';
+import {Holidays} from './Holidays';
+import {HolidayDetails} from './HolidayDetails';
+import {HolidayContext} from './HolidayContext';
+import { useState } from 'react';
 
 function App() {
+
+  const [holidayDetails, setHolidayDetails] = useState({});
+
+  const gettersSetters = {holidayDetails, setHolidayDetails};
+
   return (
+    <HolidayContext.Provider value={gettersSetters}>
     <Router>
       <Routes>
         <Route path='/' element={<Welcome/>}> </Route>
         <Route path='/holidays' element={<Holidays/>}/>
+        <Route path='/holidays/:name' element={<HolidayDetails/>}/>
       </Routes>
     </Router>
+    </HolidayContext.Provider>
   );
 }
 

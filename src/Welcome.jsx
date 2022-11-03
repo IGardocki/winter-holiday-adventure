@@ -7,7 +7,7 @@ export const Welcome = () => {
 
     return(
        <Card>
-        <Card.Title>Welcome, friends! There are so many winter holidays celebrated around the world! Would you like to learn more about them/.</Card.Title>
+        <Card.Title>Welcome, friends! There are so many winter holidays celebrated around the world! Would you like to learn more about them?</Card.Title>
         <Button onClick={() => navigate('/holidays')}>Click to get started!</Button>
        </Card>
     )

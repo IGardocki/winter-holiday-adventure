@@ -1,7 +1,12 @@
 import { winterHolidays } from './winterHolidays';
-import { Button, Card, Container, Row } from 'react-bootstrap';
+import { Button, Card, Container} from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { HolidayContext } from './HolidayContext';
 
 export const Holidays = () => {
+    const navigate = useNavigate();
+    const {setHolidayDetails} = useContext(HolidayContext);
 
     return (
         <Container>
@@ -15,7 +20,11 @@ export const Holidays = () => {
                         {/* <Card.Body> */}
                         <Card.Title>{holiday.name}</Card.Title>
                         <Card.Text>{holiday.description}</Card.Text>
-                        <Button>Learn more about {holiday.name}</Button>
+                        <Button onClick={()=> {
+                            setHolidayDetails(holiday);
+                            navigate(`/holidays/${holiday.name}`)
+                            }}>
+                                Learn more about {holiday.name}</Button>
                         {/* </Card.Body> */}
                     </Card>
                 )
