@@ -5,15 +5,22 @@ import {Holidays} from './Holidays';
 import {HolidayDetails} from './HolidayDetails';
 import {HolidayContext} from './HolidayContext';
 import { useState } from 'react';
+import { Container } from 'react-bootstrap';
+import winterImage2 from './holidayImages/winterImage2.png';
 
 function App() {
 
   const [holidayDetails, setHolidayDetails] = useState({});
+  const [backgroundImage, setBackgroundImage] = useState(winterImage2);
 
-  const gettersSetters = {holidayDetails, setHolidayDetails};
+  const gettersSetters = {holidayDetails, setHolidayDetails, backgroundImage, setBackgroundImage};
 
   return (
     <HolidayContext.Provider value={gettersSetters}>
+      <Container fluid style={{display: "flex", 
+      flexDirection: "column", 
+      // height: "100vh", 
+      textAlign: "center", justifyContent: "center", backgroundImage: `url(${backgroundImage})` }}>
     <Router>
       <Routes>
         <Route path='/' element={<Welcome/>}> </Route>
@@ -21,6 +28,7 @@ function App() {
         <Route path='/holidays/:name' element={<HolidayDetails/>}/>
       </Routes>
     </Router>
+    </Container>
     </HolidayContext.Provider>
   );
 }
