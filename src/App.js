@@ -18,7 +18,7 @@ function App() {
 
   return (
     <HolidayContext.Provider value={gettersSetters}>
-      <Container fluid style={{ display: "flex", flexDirection: "column", height: "100vh", textAlign: "center", justifyContent: "center", backgroundImage: `url(${backgroundImage})` }}>
+      <Container fluid style={{ display: "flex", flexDirection: "column", minHeight: "100vh", textAlign: "center", justifyContent: "center", backgroundImage: `url(${backgroundImage})` }}>
           <Router>
             <Routes>
               <Route path='/' element={<Welcome />}> </Route>
